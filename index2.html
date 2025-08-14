@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Patients Records - BONSU HEALTH CENTRE</title>
+  <link rel="stylesheet" href="styles2.css" />
+</head>
+<body>
+  <header>
+    <h1>BONSU HEALTH CENTRE</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index2.html">Patients</a></li>
+        <li><a href="index3.html">DrugBox</a></li>
+        <li><a href="index4.html">Disease Info</a></li>
+        <li><a href="index5.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="patient-form">
+      <h2>Add New Patient</h2>
+      <form id="patientForm">
+        <label for="regNumber">Registration Number:</label>
+        <input type="text" id="regNumber" required>
+
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" required>
+
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" required>
+
+        <label for="Gender"> Gender:</label>
+        <select id="gender" required>
+          <option value="">Select</option>
+          <option value="male">Male</option>
+           <option value="female">Female</option>
+        </select>   
+
+        <label for="maritalStatus">Marital Status:</label>
+        <select id="maritalStatus" required>
+          <option value="">Select</option>
+          <option value="Single">Single</option>
+          <option value="Married">Married</option>
+          <option value="Divorced">Divorced</option>
+          <option value="Widowed">Widowed</option>
+        </select>
+
+        <label for="nhisId">NHIS ID AND CCC:</label>
+        <input type="text" id="nhisId" required>
+
+        <label for="occupation">Occupation:</label>
+        <input type="text" id="occupation" required>
+
+        <label for="religion">Religion:</label>
+        <input type="text" id="religion" required>
+
+        <label for="address">Home Address:</label>
+        <input type="text" id="address" required>
+
+        <label for="relativeName">Nearest Relative’s Name:</label>
+        <input type="text" id="relativeName" required>
+
+        <label for="contact">Contact Info:</label>
+        <input type="tel" id="contact" required>
+
+        <label for="condition">Medical Condition:</label>
+        <textarea id="condition" rows="3" required></textarea>
+
+        <button type="submit">Add Patient</button>
+      </form>
+    </section>
+
+    <section class="patient-records">
+      <h2>Patients List</h2>
+      <div id="searchContainer">
+       
+      </div>
+      <table id="patientTable">
+        <thead>
+          <tr>
+            <th>Reg. No</th>
+            <th>Full Name</th>
+            <th>DOB</th>
+            <th>Gender</th>
+            <th>Marital Status</th>
+            <th>NHIS ID and CCC</th>
+            <th>Occupation</th>
+            <th>Religion</th>
+            <th>Address</th>
+            <th>Relative</th>
+            <th>Contact</th>
+            <th>Condition</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Dynamic Content -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Bonsu Health Centre</p>
+  </footer>
+
+  <script src="script2.js"></script>
+</body>
+</html>

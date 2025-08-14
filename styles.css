@@ -1,0 +1,82 @@
+/* style.css */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+   background-image: url('image.PNG');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: #289f24;
+}
+
+header {
+  background-color: #4CAF50;
+  color: white;
+  padding: 1em 0;
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 1em 0 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+main {
+  padding: 20px;
+}
+
+.welcome {
+  background-image: url('40.jpg');
+  background-size: cover;
+  background-position: center;
+  padding: 60px 20px;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.welcome::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(253, 255, 255, 0.4); /* dark overlay behind text */
+  z-index: 0;
+}
+
+.welcome-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #eee;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}

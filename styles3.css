@@ -1,0 +1,139 @@
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+   background: url('image.JPG') no-repeat center center fixed;
+  background-size: cover;
+  padding: 20px;
+  color: #c68181;
+  padding: 20px;
+  color: #241ab7;
+}
+
+header {
+  background-color: #a378ed;
+  color: rgb(202, 192, 11);
+  padding: 20px;
+  text-align: center;
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  margin-top: 10px;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: rgb(1, 1, 20);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+main {
+  margin-top: 30px;
+}
+
+section {
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.drug-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.drug-form label {
+  font-weight: bold;
+}
+
+.drug-form input,
+.drug-form select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.drug-form button {
+  padding: 10px;
+  background-color: #2a9d8f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.drug-form button:hover {
+  background-color: #21867a;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.filters input,
+.filters select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#drugTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#drugTable th,
+#drugTable td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+#drugTable th {
+  background-color: #e0f2f1;
+}
+
+#drugTable tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+#drugTable button {
+  padding: 5px 10px;
+  background-color: #e76f51;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#drugTable button:hover {
+  background-color: #d1563c;
+}
+
+footer {
+  text-align: center;
+  margin-top: 50px;
+  color: #777;
+}

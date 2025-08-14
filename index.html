@@ -1,0 +1,193 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BONSU HEALTH CENTRE</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>BONSU HEALTH CENTRE</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index2.html">Patients</a></li>
+        <li><a href="index3.html">DrugBox</a></li>
+        <li><a href="index4.html">Disease Info</a></li>
+        <li><a href="index5.html">About</a></li>
+      </ul>
+    </nav>
+
+  <style>
+.backup-btn, .restore-btn {
+    background-color: #007BFF; /* Blue color */
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    margin: 5px;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+.backup-btn:hover, .restore-btn:hover {
+    background-color: #0056b3;
+}
+.backup-btn:active, .restore-btn:active {
+    transform: scale(0.98);
+}
+.backup-btn img, .restore-btn img {
+    width: 18px;
+    height: 18px;
+}
+</style>
+
+  </header>
+
+  <main>
+    <section class="welcome">
+      <h2>Welcome to the Bonsu Health Centre</h2>
+      <p> We provide essential healthcare services to the local community with care, compassion, and dedication. Our goal is to ensure that every patient receives timely and affordable treatment, even in the absence of reliable internet. This platform is fully offline and designed to be simple, effective, and accessible to healthcare workers in rural areas</p>
+    </section>
+
+
+    <!-- Place these on your homepage -->
+<div style="margin:20px;">
+    <button id="backupBtn" class="backup-btn">💾 Backup Data</button>
+    <input type="file" id="restoreFile" accept=".json" style="display:none;">
+    <button id="restoreBtn" class="restore-btn">📂 Restore Data</button>
+</div>
+
+<script>
+// ====== BACKUP FUNCTION ======
+async function exportDatabase(dbName) {
+    return new Promise((resolve, reject) => {
+        const request = indexedDB.open(dbName);
+        request.onerror = () => reject(request.error);
+        request.onsuccess = () => {
+            const db = request.result;
+            const storeNames = Array.from(db.objectStoreNames);
+            const transaction = db.transaction(storeNames, 'readonly');
+
+            let data = {};
+            let pendingStores = storeNames.length;
+
+            storeNames.forEach(storeName => {
+                const store = transaction.objectStore(storeName);
+                const getAllRequest = store.getAll();
+
+                getAllRequest.onsuccess = () => {
+                    data[storeName] = getAllRequest.result;
+                    pendingStores--;
+                    if (pendingStores === 0) resolve(data);
+                };
+                getAllRequest.onerror = () => reject(getAllRequest.error);
+            });
+        };
+    });
+}
+
+async function exportAllDatabases() {
+    const databases = ['DrugDB', 'PatientDB']; // Your DB names
+    let allData = {};
+
+    for (let dbName of databases) {
+        allData[dbName] = await exportDatabase(dbName);
+    }
+
+    return allData;
+}
+
+function downloadJSON(data, filename) {
+    const jsonStr = JSON.stringify(data, null, 2);
+    const blob = new Blob([jsonStr], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    a.click();
+
+    URL.revokeObjectURL(url);
+}
+
+document.getElementById('backupBtn').addEventListener('click', async () => {
+    try {
+        const allData = await exportAllDatabases();
+        const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
+        downloadJSON(allData, `backup-${timestamp}.json`);
+        alert('Backup complete!');
+    } catch (error) {
+        console.error('Backup failed', error);
+        alert('Backup failed. Check console for details.');
+    }
+});
+
+// ====== RESTORE FUNCTION ======
+function importDatabase(dbName, storeData) {
+    return new Promise((resolve, reject) => {
+        const request = indexedDB.open(dbName);
+        request.onerror = () => reject(request.error);
+        request.onsuccess = () => {
+            const db = request.result;
+            const transaction = db.transaction(Object.keys(storeData), 'readwrite');
+
+            Object.keys(storeData).forEach(storeName => {
+                const store = transaction.objectStore(storeName);
+                storeData[storeName].forEach(record => {
+                    store.put(record);
+                });
+            });
+
+            transaction.oncomplete = () => resolve();
+            transaction.onerror = () => reject(transaction.error);
+        };
+    });
+}
+
+async function importAllDatabases(allData) {
+    for (let dbName of Object.keys(allData)) {
+        await importDatabase(dbName, allData[dbName]);
+    }
+}
+
+document.getElementById('restoreBtn').addEventListener('click', () => {
+    document.getElementById('restoreFile').click();
+});
+
+document.getElementById('restoreFile').addEventListener('change', async (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    try {
+        const text = await file.text();
+        const jsonData = JSON.parse(text);
+        await importAllDatabases(jsonData);
+        alert('Restore complete!');
+    } catch (error) {
+        console.error('Restore failed', error);
+        alert('Restore failed. Check console for details.');
+    }
+});
+</script>
+
+
+    <section class="hours">
+      <h3>Attending Hours</h3>
+      <ul>
+        <li>MONDAY TO SUNDAY 24/7</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Bonsu Health Centre</p>
+  </footer>
+</body>
+</html>

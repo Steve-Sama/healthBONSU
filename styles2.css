@@ -1,0 +1,191 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url('image.JPG');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: #3652ac;
+}
+
+header {
+  background-color: #8c83de;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+header h1 {
+  margin-bottom: 10px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 5px;
+  background-color: #8c83de;
+  transition: background-color 0.3s;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  background-color: #00332d;
+}
+
+main {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+.patient-form, .patient-records {
+  background: white;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.patient-form h2, .patient-records h2 {
+  margin-bottom: 15px;
+}
+
+form label {
+  display: block;
+  margin-top: 10px;
+}
+
+form input,
+form select,
+form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+form button {
+  margin-top: 15px;
+  background-color: #00796b;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #004d40;
+}
+
+.control-panel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+  gap: 10px;
+}
+
+.control-panel input[type="text"] {
+  flex: 1;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #bbb;
+}
+
+.control-panel button {
+  background-color: #33691e;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.control-panel button:hover {
+  background-color: #1b5e20;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+table th {
+  background-color: #e0f2f1;
+}
+
+table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+table td button {
+  margin-right: 5px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+table td button:first-child {
+  background-color: #0288d1;
+  color: white;
+}
+
+table td button:last-child {
+  background-color: #d32f2f;
+  color: white;
+}
+
+footer {
+  background-color: #004d40;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin-top: 30px;
+}
+
+table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td, th {
+  word-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+  overflow-wrap: break-word;
+  max-width: 200px; /* adjust width as needed */
+}
+
+td:last-child {
+  max-width: 250px;
+  overflow: auto;
+}

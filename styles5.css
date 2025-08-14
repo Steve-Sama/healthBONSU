@@ -1,0 +1,116 @@
+/* styles5.css */
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f8fc;
+  color: #333;
+}
+
+header {
+  background-color: #2c3e50;
+  padding: 1rem;
+  color: white;
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  background-color: #34495e;
+}
+
+nav ul li {
+  margin: 0 15px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  display: block;
+}
+
+nav ul li a.active,
+nav ul li a:hover {
+  background-color: #1abc9c;
+  border-radius: 5px;
+}
+
+main {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+h2 {
+  color: #2c3e50;
+  border-bottom: 2px solid #1abc9c;
+  padding-bottom: 5px;
+  margin-top: 2rem;
+}
+
+.member-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.member-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.member-card img {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+}
+
+.uds-logo {
+  max-width: 200px;
+  display: block;
+  margin: 1rem auto;
+}
+
+.anthem {
+  background-color: #ecf0f1;
+  padding: 1rem;
+  border-radius: 10px;
+  font-style: italic;
+  margin-top: 2rem;
+  line-height: 1.8;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #2c3e50;
+  color: white;
+  margin-top: 2rem;
+}
+
+@media (max-width: 600px) {
+  nav ul {
+    flex-direction: column;
+  }
+
+  .member-card img {
+    max-width: 100%;
+  }
+
+  main {
+    padding: 1rem;
+  }
+}
